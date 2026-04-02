@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Dark fintech theme - primary tokens */
+    --background: 0.09 0.018 250;
+    --foreground: 0.93 0.015 240;
+    --card: 0.12 0.022 245;
+    --card-foreground: 0.93 0.015 240;
+    --popover: 0.14 0.025 245;
+    --popover-foreground: 0.93 0.015 240;
+    --primary: 0.62 0.22 255;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.15 0.028 245;
+    --secondary-foreground: 0.93 0.015 240;
+    --muted: 0.15 0.022 245;
+    --muted-foreground: 0.58 0.04 240;
+    --accent: 0.72 0.2 155;
+    --accent-foreground: 0.09 0.018 250;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.22 0.04 250;
+    --input: 0.18 0.03 245;
+    --ring: 0.62 0.22 255;
+    --chart-1: 0.62 0.22 255;
+    --chart-2: 0.72 0.2 155;
+    --chart-3: 0.75 0.18 200;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.11 0.02 250;
+    --sidebar-foreground: 0.93 0.015 240;
+    --sidebar-primary: 0.62 0.22 255;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.15 0.028 245;
+    --sidebar-accent-foreground: 0.93 0.015 240;
+    --sidebar-border: 0.22 0.04 250;
+    --sidebar-ring: 0.62 0.22 255;
+
+    /* Custom semantic tokens */
+    --blue-accent: 0.62 0.22 255;
+    --green-accent: 0.72 0.2 155;
+    --glow-blue: oklch(0.62 0.22 255 / 0.35);
+    --glow-green: oklch(0.72 0.2 155 / 0.35);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .btn-telegram {
+    @apply inline-flex items-center gap-2.5 px-8 py-4 rounded-full font-semibold text-white transition-all duration-300;
+    background: linear-gradient(
+      135deg,
+      oklch(0.55 0.24 255),
+      oklch(0.68 0.22 165)
+    );
+    box-shadow: 0 0 24px oklch(0.62 0.22 255 / 0.4), 0 4px 16px
+      rgba(0, 0, 0, 0.4);
+  }
+  .btn-telegram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px oklch(0.62 0.22 255 / 0.6), 0 8px 24px
+      rgba(0, 0, 0, 0.5);
+    filter: brightness(1.1);
+  }
+  .btn-telegram:active {
+    transform: translateY(0);
+  }
+
+  .card-feature {
+    @apply p-6 rounded-2xl transition-all duration-300 cursor-default;
+    background: oklch(0.13 0.025 245);
+    border: 1px solid oklch(0.22 0.04 250);
+  }
+  .card-feature:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.55 0.18 255);
+    box-shadow: 0 8px 32px oklch(0.62 0.22 255 / 0.15);
+  }
+
+  .text-blue-glow {
+    color: oklch(0.72 0.2 255);
+    text-shadow: 0 0 20px oklch(0.62 0.22 255 / 0.5);
+  }
+  .text-green-glow {
+    color: oklch(0.78 0.18 155);
+    text-shadow: 0 0 20px oklch(0.72 0.2 155 / 0.5);
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      90deg,
+      oklch(0.72 0.2 255),
+      oklch(0.78 0.18 155)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .floating {
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 24px oklch(0.62 0.22 255 / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 48px oklch(0.62 0.22 255 / 0.7);
+    }
+  }
+
+  .candlestick-up {
+    fill: oklch(0.72 0.2 155);
+  }
+  .candlestick-down {
+    fill: oklch(0.6 0.22 25);
+  }
+
+  .stat-card {
+    @apply p-6 rounded-2xl text-center;
+    background: oklch(0.13 0.025 245);
+    border: 1px solid oklch(0.22 0.04 250);
+  }
+
+  .section-bg-alt {
+    background: oklch(0.105 0.02 250);
+  }
+}
